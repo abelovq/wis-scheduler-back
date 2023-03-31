@@ -1,5 +1,5 @@
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+@Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -12,4 +12,7 @@ export class User {
 
   @Column({ unique: true })
   email: string;
+
+  @Column({ default: null, nullable: true })
+  refreshToken: string;
 }

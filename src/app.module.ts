@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GoogleController } from './google/google.controller';
-import { GoogleService } from './google/google.service';
-import { GoogleStrategy } from './google/google.strategy';
+import { GoogleService } from './auth/google/google.service';
+import { GoogleStrategy } from './auth/google/google.strategy';
 
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
@@ -13,6 +12,8 @@ import { UsersService } from './users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { VacationModule } from './vacation/vacation.module';
 import { VacationMoneyModule } from './vacation-money/vacation-money.module';
+import { AuthController } from './auth/auth.controller';
+import { AuthService } from './auth/auth.service';
 
 @Module({
   imports: [
@@ -32,13 +33,14 @@ import { VacationMoneyModule } from './vacation-money/vacation-money.module';
     VacationModule,
     VacationMoneyModule,
   ],
-  controllers: [GoogleController, AppController],
+  controllers: [AuthController],
   providers: [
     GoogleStrategy,
     GoogleService,
     AppService,
     UsersService,
     JwtService,
+    AuthService,
   ],
 })
 export class AppModule {}

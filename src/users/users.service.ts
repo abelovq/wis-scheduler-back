@@ -24,8 +24,20 @@ export class UsersService {
     return `This action returns user by #${id}`;
   }
 
-  async findOneByEmail(email: string) {
-    return this.usersRepository.findOneBy({ email });
+  async findByEmail(email: string) {
+    const user = await this.usersRepository.findOneBy({
+      email,
+    });
+    return user;
+  }
+
+  async updateRefreshToken(data: UpdateUserDto) {
+    const { email, refreshToken } = data;
+    await this.usersRepository.update({ email }, { refreshToken });
+  }
+
+  async signout(email: string) {
+    await this.usersRepository.update({ email }, { refreshToken: null });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
