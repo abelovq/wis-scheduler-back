@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GoogleService } from './auth/google/google.service';
 import { GoogleStrategy } from './auth/google/google.strategy';
@@ -20,13 +19,7 @@ import { AuthService } from './auth/auth.service';
     TypeOrmModule.forFeature([User]),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'user1',
-      password: 'password',
-      database: 'wisscheduler',
-      entities: [User],
-      synchronize: true,
+      url: process.env.DATABASE_URL,
     }),
     UsersModule,
     AuthModule,
