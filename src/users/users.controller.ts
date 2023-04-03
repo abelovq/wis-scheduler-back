@@ -7,10 +7,14 @@ import {
   Param,
   Delete,
   UseGuards,
+  SetMetadata,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { RolesGuard } from 'src/auth/guards/roles.guard';
+import { Roles } from 'src/auth/decorators/roles.decorator';
+import { Role } from 'src/types/roles.enum';
 import { AccessJwtAuthGuard } from 'src/auth/guards/access-jwt-auth.guard';
 
 @Controller('users')
@@ -42,8 +46,9 @@ export class UsersController {
     return this.usersService.remove(+id);
   }
 
-  @UseGuards(AccessJwtAuthGuard)
   @Get('asd')
+  @Roles(Role.User)
+  @UseGuards(AccessJwtAuthGuard, RolesGuard)
   test() {
     return 'test';
   }
