@@ -11,6 +11,7 @@ async function bootstrap() {
   });
   app.use(cookieParser());
   app.setGlobalPrefix('api');
+  console.log('test');
   await app.listen(3001);
 }
 bootstrap();
