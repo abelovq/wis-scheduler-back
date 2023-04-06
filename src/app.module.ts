@@ -13,6 +13,8 @@ import { VacationMoneyModule } from './vacation-money/vacation-money.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { dataSourceOptions } from '../db/data-source';
+import { Vacation } from './vacation/entities/vacation.entity';
+import { VacationMoney } from './vacation-money/entities/vacation-money.entity';
 
 @Module({
   imports: [
