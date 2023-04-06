@@ -7,11 +7,10 @@ async function bootstrap() {
   app.enableCors({
     allowedHeaders: 'Access-Control-Allow-Origin',
     credentials: true,
-    origin: 'http://localhost:3000',
+    origin: `${process.env.FRONT_API_URL}`,
   });
   app.use(cookieParser());
   app.setGlobalPrefix('api');
-  console.log('test');
   await app.listen(3001);
 }
 bootstrap();
