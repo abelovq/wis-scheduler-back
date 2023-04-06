@@ -7,4 +7,7 @@ export class Vacation {
 
   @Column()
   date: Date;
+
+  @Column()
+  info: string;
 }
