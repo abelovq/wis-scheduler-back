@@ -20,6 +20,7 @@ export class User {
   @Column({
     type: 'enum',
     enum: Role,
+    enumName: 'rolesEnum',
     array: true,
     default: [Role.User],
   })
