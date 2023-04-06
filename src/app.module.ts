@@ -12,7 +12,7 @@ import { VacationModule } from './vacation/vacation.module';
 import { VacationMoneyModule } from './vacation-money/vacation-money.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
-import { dataSourceOptions } from './data-source';
+import { dataSourceOptions } from '../db/data-source';
 
 @Module({
   imports: [
