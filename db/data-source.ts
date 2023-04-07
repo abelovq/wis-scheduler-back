@@ -4,7 +4,7 @@ export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres' as const,
   database: 'wisscheduler',
   url: process.env.DATABASE_URL,
-  synchronize: process.env.NODE_ENV === 'development' ? true : false,
+  // synchronize: process.env.NODE_ENV === 'development' ? true : false,
   entities: ['dist/src/**/entities/*.entity.js'],
   migrations: ['dist/db/migrations/*.js'],
 };
